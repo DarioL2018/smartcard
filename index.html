@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darío Larenas - Smart Card</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* PALETA DE COLORES PROFESIONAL */
+            --primary-color: #0f766e; /* Un tono verde azulado (Teal) sofisticado */
+            --primary-dark: #0d5f58;
+            --accent-bg: #f0fdfa;
+            --text-dark: #111827;
+            --text-medium: #4b5563;
+            --text-light: #9ca3af;
+            --card-bg: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        /* LA TARJETA PRINCIPAL */
+        .card-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 380px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.12);
+            position: relative;
+        }
+
+        /* BANNER SUPERIOR (CSS Gradient) */
+        .card-banner {
+            height: 120px;
+            background: linear-gradient(45deg, var(--primary-color), #0891b2);
+            position: relative;
+        }
+
+        /* SECCIÓN DEL PERFIL */
+        .profile-section {
+            text-align: center;
+            padding: 0 25px 30px;
+            margin-top: -60px; /* Superposición sobre el banner */
+            position: relative;
+        }
+
+        /* Avatar Mejorado */
+        .avatar-placeholder {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            color: var(--primary-color);
+            border: 4px solid white;
+            box-shadow: 0 8px 16px -4px rgba(0,0,0,0.1);
+        }
+
+        h1.name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        p.role {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        
+        p.location {
+            color: var(--text-light);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* SECCIÓN DE ACCIONES (BOTONES) */
+        .actions-section {
+            padding: 25px;
+            background-color: #fafafa;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn svg { width: 24px; height: 24px; }
+        .btn:active { transform: scale(0.98); }
+        .btn:hover { transform: translateY(-2px); }
+
+
+        /* Botón Primario: Guardar Contacto (Destacado) */
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 10px 20px -10px rgba(15, 118, 110, 0.5);
+        }
+        .btn-primary:hover { background: var(--primary-dark); }
+
+        /* Botones Secundarios */
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-dark);
+            border: 2px solid #e5e7eb;
+        }
+        .btn-secondary:hover { 
+            border-color: var(--primary-color); 
+            background-color: var(--accent-bg);
+        }
+        /* Estilo específico para LinkedIn */
+        .btn-linkedin { color: #0077b5; }
+
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="card-banner"></div>
+
+        <div class="profile-section">
+            <div class="avatar-placeholder">DL</div>
+            <h1 class="name">Darío Larenas</h1>
+            <p class="role">Software Engineer & Systems Architect</p>
+            <p class="location">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Quito, Ecuador
+            </p>
+        </div>
+
+        <div class="actions-section">
+            
+            <button onclick="downloadVCard()" class="btn btn-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Guardar en Contactos
+            </button>
+
+            <a href="https://wa.me/593994228271" class="btn btn-secondary" target="_blank">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.768-.001 1.298.38 2.27 1.019 3.287l-.682 2.478 2.539-.667c.994.541 1.943.834 3.175.835 3.182 0 5.768-2.587 5.769-5.768.001-3.182-2.585-5.769-5.767-5.769zm7.554 3.94c-.252-.413-.437-.675-.706-.861-.284-.196-.62-.306-1.063-.306-.247 0-.499.051-.71.139-.275.113-.547.272-1.05.586-.559.349-1.098.742-1.634 1.165-.547.431-1.02.869-1.412 1.272-.404.414-.868.81-1.386 1.214-.504.393-1.012.684-1.504.879-.216.086-.471.136-.724.136-.449 0-.79-.112-1.08-.314-.273-.192-.458-.461-.709-.881l-.162-.271-1.199 2.332.207.161c.49.381 1.077.654 1.733.842.714.204 1.495.243 2.281.174.841-.075 1.666-.331 2.442-.721 1.343-.676 2.412-1.747 3.228-3.197.405-.717.678-1.569.766-2.48.072-.745.032-1.496-.163-2.187l-.145-.533z"/></svg>
+                Enviar WhatsApp
+            </a>
+
+            <a href="https://www.linkedin.com/in/dario-javier-larenas-arrese-76132757/" class="btn btn-secondary btn-linkedin" target="_blank">
+                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.75 1.75 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93-1.07 0-1.62.8-1.62 2.15V19h-3v-9h3v1.44c.66-1.23 1.87-1.6 3.3-1.6 2.37 0 3.7 1.56 3.7 4.74z"/></svg>
+                Conectar en LinkedIn
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function downloadVCard() {
+            const contact = {
+                name: "Larenas;Darío;;;",
+                fn: "Darío Larenas",
+                title: "Software Engineer",
+                org: "Freelance",
+                email: "dario.larenas@outlook.com",
+                tel: "+593994228271",
+                url: "https://www.linkedin.com/in/dario-javier-larenas-arrese-76132757/",
+                address: ";;Quito;Pichincha;;;Ecuador"
+            };
+
+            const vCardData = [
+                'BEGIN:VCARD',
+                'VERSION:3.0',
+                `N:${contact.name}`,
+                `FN:${contact.fn}`,
+                `ORG:${contact.org}`,
+                `TITLE:${contact.title}`,
+                `TEL;TYPE=CELL:${contact.tel}`,
+                `EMAIL:${contact.email}`,
+                `URL:${contact.url}`,
+                `ADR;TYPE=HOME:${contact.address}`,
+                'END:VCARD'
+            ].join('\n');
+
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Dario_Larenas.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
