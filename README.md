@@ -1,2 +1,0 @@
-# dariolarenas.github.io
-SmartCard
